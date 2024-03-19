@@ -36,38 +36,23 @@ const CreateAuction = () => {
     };
 
     return (
+        <div className="CreateAuction">
         <form className="FormContainer" onSubmit={createAuction}>
             <h1 className='h1'>Create Auction</h1>
-            <label className='LabelInput'>
-                Title:
-                <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-            </label>
-            <label className='LabelInput'>
-                Description:
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="3" />
-            </label>
-            <label className='LabelInput'>
-                Starting price:
-                <input type="text" value={startingPrice} onChange={(e) => setStartingPrice(e.target.value)} />
-            </label>
-            <label className='LabelInput'>
-                Start date:
-                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
-            </label>
-            <label className='LabelInput'>
-                End date:
-                <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
-            </label>
-            <label className='LabelInput'>
-                Created by:
-                <input type="text" value={createdBy} onChange={(e) => setCreatedBy(e.target.value)} />
-            </label>
+            <input className="InputField" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <textarea className="InputField" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} rows="3" />
+            <input className="InputField" type="text" placeholder="Starting price" value={startingPrice} onChange={(e) => setStartingPrice(e.target.value)} />
+            <input className="InputField" type="date" placeholder="Start date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+            <input className="InputField" type="date" placeholder="End date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+            <input className="InputField" type="text" placeholder="Created by" value={createdBy} onChange={(e) => setCreatedBy(e.target.value)} />
             
             <button className='Button' type="submit">Create Auction</button>
         </form>
+        </div>
     );
 };
 
 export default CreateAuction;
+
 
 

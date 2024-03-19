@@ -1,9 +1,49 @@
-.ul-list{
-    list-style-type: none;
-}
+ .header {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #636363;
+  }
 
-.listobjects {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #b4b4b4;
-}
+  .ul {
+    display: flex; /* Aktiverar flexbox */
+    flex-direction: column; /* Objekten staplas vertikalt */
+    align-items: center; /* Centrerar objekten horisontellt */
+    list-style-type: none; /* Tar bort punkterna från listan */
+    padding: 0; /* Tar bort standardpaddingen från listan */
+  }
+  
+  .listobjects {
+    box-shadow: 0 1px 16px #686569; /* Lägger till en skugga runt varje auktionsobjekt */
+    padding: 1rem; /* Lägger till utrymme runt innehållet i varje auktionsobjekt */
+    margin-bottom: 2rem; /* Lägger till utrymme mellan auktionsobjekten */
+    border-radius: 5px; /* Ger ramen rundade hörn */
+    background-color: rgba(218, 251, 255, 0.6); /* Sätter bakgrundsfärgen till en halvgenomskinlig vit färg */
+    width: 50%; /* Sätter bredden till 50% av föräldraelementets bredd */
+    max-width: 600px; /* Används för att sätta en maximal bredd om nödvändigt */
+  }
+  
+  .listobjects h4,
+  .listobjects p {
+    margin: 1rem 0; /* Lägger till vertikalt utrymme runt rubriker och paragrafer */
+    color:#636363;
+    justify-content: center; /* Centrerar texten horisontellt */
+    text-align: center;
+    font-weight: bold;
+  }
+
+
+  .listobjects h2 {
+    justify-content: center; /* Centrerar texten horisontellt */
+    text-align: center;
+    color:#e3f9ff;
+    background-color: rgba(83, 83, 83, 0.6);
+    padding: 0.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .listobjects:hover {
+    background-color: #b3f0ff; /* Ändrar bakgrundsfärgen när muspekaren är över ett auktionsobjekt */
+    cursor: pointer; /* Visar en pekarikonen när muspekaren är över ett auktionsobjekt */
+  }
+  

@@ -1,0 +1,40 @@
+.navbar {
+    max-width: 100%;
+    overflow: hidden;
+    background-color:#656565; 
+    padding: 0.5rem 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ul-list {
+    list-style-type: none; /* Tar bort listmarkörer */
+    display: flex; /* Gör så att listelementen läggs ut på samma rad */
+    align-items: center; /* Centrerar listelementen vertikalt */
+    justify-content: center; /* Centrerar listelementen horisontellt */ 
+  }
+
+.navbar a {
+    text-decoration: none;
+    margin: 0 2rem;
+    display: flex;
+}
+
+.links {
+    display: flex;
+    font-size: 1rem;
+    margin: 0 1rem;
+}
+
+.links a {
+    color: #bdeeff;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 1rem;
+    display: flex;
+}
+
+.links a:hover {
+    transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+}

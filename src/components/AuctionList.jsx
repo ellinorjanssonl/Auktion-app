@@ -18,19 +18,19 @@ const AuctionList = () => {
 
     return (
         <div>
-            <h1 className='h1'>Auctions</h1>
-            <ul className='ul-list'> 
+            <h1 className='header'>Auctions</h1>
+            <ul className='ul'> 
             {data.map((auction) => ( 
-                <li className='listobjects' key={guid()} onClick={() => getId(auction.Id)}>
-                    <h1 key={guid()}>{auction.Title}</h1>
-                    <h3 key={guid()}>Description</h3>
+                <li className='listobjects'key={guid()}>{auction.Id}
+                    <h2 key={guid()}>{auction.Title}</h2> {/*länka till bidsidan här*/} 
+                    <h4 key={guid()}>Description</h4>
                     <p key={guid()}>{auction.Description}</p>
-                    <h3 key={guid()}>Starting price</h3>
+                    <h4 key={guid()}>Starting price</h4>
                     <p key={guid()}>{auction.StartingPrice}</p>
-                    <h3 key={guid()}>Start and end date</h3>
+                    <h4 key={guid()}>Start and end date</h4>
                     <p key={guid()}>{auction.StartDate}</p>
                     <p key={guid()}>{auction.EndDate}</p>
-                    <h3 key={guid()}>Created by</h3>
+                    <h4 key={guid()}>Created by</h4>
                     <p key={guid()}>{auction.CreatedBy}</p>
                 </li>   
             ))}

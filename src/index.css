@@ -1,11 +1,14 @@
 :root {
-  --color-primary: #fafafa;
+  --color-primary: #afefff;
   --color-secondary: #333;
-  --color-bg: #747474; 
+  --color-bg: #898989; 
+  --color-text: #fff;
+  --color-button: #60ba88;
+  --color-button-hover: #c06fdb;
 }
 
 body {
-  background-color: var(--color-primary);
+  background: linear-gradient(180deg, rgb(178, 222, 235) 0%, rgb(85, 214, 171) 35%, rgb(199, 110, 205) 100%);
   color: var(--color-secondary);
   font-family: 'poppins';
 }
