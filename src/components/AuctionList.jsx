@@ -31,7 +31,7 @@ const AuctionList = () => {
       <h1 className='header'>Auctions</h1>
       <input className='searchInput'
         type="text"
-        placeholder="Search auctions..."
+        placeholder="Search for auctions here..."
         value={searchTerm}
         onChange={handleSearchChange} 
       />
