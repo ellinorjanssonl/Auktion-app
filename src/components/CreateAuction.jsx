@@ -36,7 +36,7 @@ const CreateAuction = () => {
     };
 
     return (
-        <div className="CreateAuction">
+        
         <form className="FormContainer" onSubmit={createAuction}>
             <h1 className='h1'>Create Auction</h1>
             <input className="InputField" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -48,7 +48,7 @@ const CreateAuction = () => {
             
             <button className='Button' type="submit">Create Auction</button>
         </form>
-        </div>
+    
     );
 };
 

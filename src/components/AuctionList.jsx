@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'; // Importera useState
 import './AuctionList.css';
+import { Link } from 'react-router-dom'; // Importera Link
 
 const AuctionList = () => {
     const [data, setData] = useState([]);
@@ -20,22 +21,23 @@ const AuctionList = () => {
         <div>
             <h1 className='header'>Auctions</h1>
             <ul className='ul'> 
-            {data.map((auction) => ( 
-                <li className='listobjects'key={guid()}>{auction.Id}
-                    <h2 key={guid()}>{auction.Title}</h2> {/*länka till bidsidan här*/} 
-                    <h4 key={guid()}>Description</h4>
-                    <p key={guid()}>{auction.Description}</p>
-                    <h4 key={guid()}>Starting price</h4>
-                    <p key={guid()}>{auction.StartingPrice}</p>
-                    <h4 key={guid()}>Start and end date</h4>
-                    <p key={guid()}>{auction.StartDate}</p>
-                    <p key={guid()}>{auction.EndDate}</p>
-                    <h4 key={guid()}>Created by</h4>
-                    <p key={guid()}>{auction.CreatedBy}</p>
-                </li>   
+            {data.map((auction) => (
+           <li className='listobjects' key={guid()}>
+           <Link to={`/Bid/${auction.Id}`}>
+            <h2>{auction.Title}</h2> {/* Gör denna titel klickbar */}
+           </Link>
+               <h4>Description</h4>
+               <p>{auction.Description}</p>
+               <h4>Starting price</h4>
+               <p>{auction.StartingPrice}</p>
+               <h4>Start and end date</h4>
+               <p>{auction.StartDate}</p>
+               <p>{auction.EndDate}</p>
+               <h4>Created by</h4>
+               <p>{auction.CreatedBy}</p>
+             </li>
             ))}
-            </ul>
-           
+            </ul> 
         </div>
     );
 };
