@@ -1,0 +1,9 @@
+.ul-list{
+    list-style-type: none;
+}
+
+.listobjects {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #b4b4b4;
+}

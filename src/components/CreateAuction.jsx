@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './CreateAuction.css';
 
 const CreateAuction = () => {
     const [title, setTitle] = useState('');
@@ -35,33 +36,34 @@ const CreateAuction = () => {
     };
 
     return (
-        <form onSubmit={createAuction}>
-            <label>
+        <form className="FormContainer" onSubmit={createAuction}>
+            <h1 className='h1'>Create Auction</h1>
+            <label className='LabelInput'>
                 Title:
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
             </label>
-            <label>
+            <label className='LabelInput'>
                 Description:
-                <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+                <textarea value={description} onChange={(e) => setDescription(e.target.value)} rows="3" />
             </label>
-            <label>
+            <label className='LabelInput'>
                 Starting price:
                 <input type="text" value={startingPrice} onChange={(e) => setStartingPrice(e.target.value)} />
             </label>
-            <label>
+            <label className='LabelInput'>
                 Start date:
                 <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
             </label>
-            <label>
+            <label className='LabelInput'>
                 End date:
                 <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </label>
-            <label>
+            <label className='LabelInput'>
                 Created by:
                 <input type="text" value={createdBy} onChange={(e) => setCreatedBy(e.target.value)} />
             </label>
             
-            <button type="submit">Create Auction</button>
+            <button className='Button' type="submit">Create Auction</button>
         </form>
     );
 };

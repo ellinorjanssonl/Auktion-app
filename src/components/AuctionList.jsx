@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'; // Importera useState
+import './AuctionList.css';
 
 const AuctionList = () => {
     const [data, setData] = useState([]);
@@ -17,9 +18,10 @@ const AuctionList = () => {
 
     return (
         <div>
-            <ul> 
+            <h1 className='h1'>Auctions</h1>
+            <ul className='ul-list'> 
             {data.map((auction) => ( 
-                <li key={guid()} onClick={() => getId(auction.Id)}>
+                <li className='listobjects' key={guid()} onClick={() => getId(auction.Id)}>
                     <h1 key={guid()}>{auction.Title}</h1>
                     <h3 key={guid()}>Description</h3>
                     <p key={guid()}>{auction.Description}</p>
