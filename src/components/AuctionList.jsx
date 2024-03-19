@@ -23,18 +23,19 @@ const AuctionList = () => {
             <ul className='ul'> 
             {data.map((auction) => (
            <li className='listobjects' key={guid()}>
-           <Link to={`/Bid/${auction.Id}`}>
+           <Link className='oncklicklink'to={`/Bid/${auction.Id}`}>
             <h2>{auction.Title}</h2> {/* Gör denna titel klickbar */}
-           </Link>
-               <h4>Description</h4>
+          
+               <h4>Description:</h4>
                <p>{auction.Description}</p>
-               <h4>Starting price</h4>
+               <h4>Starting price:</h4>
                <p>{auction.StartingPrice}</p>
-               <h4>Start and end date</h4>
+               <h4>Start and end date:</h4>
                <p>{auction.StartDate}</p>
                <p>{auction.EndDate}</p>
-               <h4>Created by</h4>
+               <h4>Created by:</h4>
                <p>{auction.CreatedBy}</p>
+               </Link>
              </li>
             ))}
             </ul> 

@@ -30,7 +30,11 @@
     text-align: center;
     font-weight: bold;
   }
-
+  
+  .oncklicklink {
+    text-decoration: none; /* Tar bort understrykningen från länken */
+    color: #636363; /* Sätter färgen på länken */
+  }
 
   .listobjects h2 {
     justify-content: center; /* Centrerar texten horisontellt */
