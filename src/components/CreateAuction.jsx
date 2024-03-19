@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Lägg till useState-import
+import React, { useState } from 'react';
 
 const CreateAuction = () => {
     const [title, setTitle] = useState('');
@@ -8,7 +8,6 @@ const CreateAuction = () => {
     const [endDate, setEndDate] = useState('');
     const [createdBy, setCreatedBy] = useState('');
 
-    // Definiera createAuction utanför useEffect
     const createAuction = async (event) => {
         event.preventDefault(); 
         const response = await fetch('https://auctioneer.azurewebsites.net/auction/h4i', {
@@ -30,17 +29,13 @@ const CreateAuction = () => {
         if(response.ok) {
             const data = await response.json();
             console.log('Auktion skapad:', data);
-            // Här kan du antingen omdirigera användaren, uppdatera state med den nya auktionen,
-            // eller utföra någon annan åtgärd som svar på den lyckade skapelsen.
         } else {
             console.error('Fel vid skapande av auktion');
         }
     };
-    
 
     return (
         <form onSubmit={createAuction}>
-            {/* Formulärelement och hantering av state-uppdateringar */}
             <label>
                 Title:
                 <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
@@ -55,11 +50,11 @@ const CreateAuction = () => {
             </label>
             <label>
                 Start date:
-                <input type="text" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+                <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
             </label>
             <label>
                 End date:
-                <input type="text" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+                <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
             </label>
             <label>
                 Created by:
@@ -72,4 +67,5 @@ const CreateAuction = () => {
 };
 
 export default CreateAuction;
+
 
