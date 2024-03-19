@@ -50,4 +50,19 @@
     background-color: #b3f0ff; /* Ändrar bakgrundsfärgen när muspekaren är över ett auktionsobjekt */
     cursor: pointer; /* Visar en pekarikonen när muspekaren är över ett auktionsobjekt */
   }
+
+  .searchInput {
+    font-family: 'poppins';
+    width: 15%;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+
   
