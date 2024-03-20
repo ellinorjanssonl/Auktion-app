@@ -6,7 +6,7 @@ const AuctionDetails = () => {
   let { auctionId } = useParams();
   const [auctionDetails, setAuctionDetails] = useState(null);
 
-
+ 
   useEffect(() => {
     // Antag att vi har en funktion som heter fetchAuctionDetails som tar ett ID och returnerar auktionsdetaljer
     const fetchAuctionDetails = async (id) => {
@@ -28,7 +28,10 @@ const AuctionDetails = () => {
   }, [auctionId]); // Den här effekten körs varje gång auctionId ändras
 
   if (!auctionDetails) {
-    return <div>Loading auction details or no auction data available...</div>;
+    return <div className='Errormessage'> 
+      <h1>No auctions selected</h1>
+      <p>Please select an auction from the list to place bid</p>
+    </div>;
   }
 
   return (

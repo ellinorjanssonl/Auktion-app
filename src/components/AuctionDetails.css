@@ -1,3 +1,12 @@
+.Errormessage {
+    font-size: 1.5rem;
+    color: snow;
+    justify-content: center;
+    text-align: center;
+    margin: 0 auto;
+    padding: 0;
+}
+
 .Bidsection {
     display: flex;
     flex-direction: column;
