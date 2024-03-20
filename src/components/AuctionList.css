@@ -57,7 +57,6 @@
   
   .listobjects:hover {
     background-color: #b3f0ff; /* Ändrar bakgrundsfärgen när muspekaren är över ett auktionsobjekt */
-    cursor: pointer; /* Visar en pekarikonen när muspekaren är över ett auktionsobjekt */
   }
 
   .listobjects a {
@@ -86,5 +85,24 @@
     text-align: center;
   }
 
+  .bidButton {
+    font-family: 'poppins';
+    font-weight: bold;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #3fd683;
+    box-shadow: 1px 1px 5px #686569;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+    .bidButton:hover {
+        background-color: #17c568;
+        transform: matrix(1.1, 0, 0, 1.1, 0, 0);
+    }
 
   

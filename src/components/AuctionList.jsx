@@ -20,7 +20,6 @@ const AuctionList = () => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
-  // Filtrera auktionerna baserat på söktermen
   const filteredData = data.filter(auction => 
     auction.Title.toLowerCase().includes(searchTerm) ||
     auction.Description.toLowerCase().includes(searchTerm)
@@ -38,17 +37,19 @@ const AuctionList = () => {
       <ul className='ul'>
         {filteredData.map((auction) => (
           <li className='listobjects' key={auction.Id}>
+            <h2>{auction.Title}</h2>
+            <h4>Description:</h4>
+            <p>{auction.Description}</p>
+            <h4>Starting price:</h4>
+            <p>{auction.StartingPrice}</p>
+            <h4>Start and end date:</h4>
+            <p>{auction.StartDate}</p>
+            <p>{auction.EndDate}</p>
+            <h4>Created by:</h4>
+            <p>{auction.CreatedBy}</p>
+            {/* Lägg till knappen för att länka till Bid sidan för varje auktion */}
             <Link to={`/Bid/${auction.Id}`}>
-              <h2>{auction.Title}</h2>
-              <h4>Description:</h4>
-              <p>{auction.Description}</p>
-              <h4>Starting price:</h4>
-              <p>{auction.StartingPrice}</p>
-              <h4>Start and end date:</h4>
-              <p>{auction.StartDate}</p>
-              <p>{auction.EndDate}</p>
-              <h4>Created by:</h4>
-              <p>{auction.CreatedBy}</p>
+              <button className='bidButton'>Go to Bid</button>
             </Link>
           </li>
         ))}
@@ -58,6 +59,7 @@ const AuctionList = () => {
 };
 
 export default AuctionList;
+
 
 
 
