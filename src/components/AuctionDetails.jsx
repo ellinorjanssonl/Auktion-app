@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './AuctionDetails.css';
 
 const AuctionDetails = () => {
   let { auctionId } = useParams();
   const [auctionDetails, setAuctionDetails] = useState(null);
+
 
   useEffect(() => {
     // Antag att vi har en funktion som heter fetchAuctionDetails som tar ett ID och returnerar auktionsdetaljer
@@ -31,17 +33,19 @@ const AuctionDetails = () => {
 
   return (
     <div>
+      <div className='Bidsection'>
       <h1>{auctionDetails.Title}</h1>
       <h4>Description:</h4>
       <p>{auctionDetails.Description}</p>
       <h4>Starting price:</h4>
       <p>{auctionDetails.StartingPrice}</p>
-      <h4>Start and end date:</h4>
-      <p>{auctionDetails.StartDate}</p>
-      <p>{auctionDetails.EndDate}</p>
-      <h4>Created by:</h4>
-      <p>{auctionDetails.CreatedBy}</p>
-      {/* Additional auction details */}
+      <h2>Place bid here</h2>
+      <form className='form-bid'>
+        <label htmlFor="bidAmount">Bid amount:</label>
+        <input type="number" id="bidAmount" name="bidAmount" />
+        <button type="submit">Place bid</button>
+      </form>
+      </div> 
     </div>
   );
 };

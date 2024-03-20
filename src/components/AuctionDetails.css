@@ -1,0 +1,41 @@
+.Bidsection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 16px #6c4f72;
+    background-color: rgba(236, 29, 255, 0.2);
+    width: 50%;
+    margin: 3rem auto;
+}
+
+.Bidsection h1 {
+    text-align: center;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    color: #fff;
+}
+
+.Bidsection p {
+    text-align: center;
+    margin-bottom: 1px;
+    margin-top: 1px;
+}
+
+
+.form-bid {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'poppins';
+    color: #5f5f5f;
+    font-weight: bold;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #717171;
+    width: 50%;
+    background-color: rgba(175, 253, 254, 0.5);
+}
