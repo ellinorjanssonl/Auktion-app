@@ -11,4 +11,5 @@ body {
   background: linear-gradient(180deg, rgb(178, 222, 235) 0%, rgb(85, 214, 171) 35%, rgb(199, 110, 205) 100%);
   color: var(--color-secondary);
   font-family: 'poppins';
+  background-repeat: no-repeat;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import AuctionList from "./components/AuctionList";
 import CreateAuction from "./components/CreateAuction";
+import AuctionDetails from "./components/AuctionDetails";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AuctionDetails from './components/AuktionDetails';
 
 function App() {
   return (
@@ -11,9 +11,9 @@ function App() {
       <>
         <Navbar />
         <Routes>
-          <Route path="/" element={<AuctionList />} /> {/* Definiera AuctionList-komponenten för root-path */}
-          <Route path="/CreateAuction" element={<CreateAuction />} /> {/* Definiera CreateAuction-komponenten för /CreateAuction-path */}
-          <Route path="/Bid/:id" element={<AuctionDetails />} /> {/* Definiera AuctionList-komponenten för /Bid-path */}
+          <Route path="/" element={<AuctionList />} />
+          <Route path="/CreateAuction" element={<CreateAuction />} />
+          <Route path="/Bid/:auctionId" element={<AuctionDetails />} /> {/* Ändra till :auctionId här */}
         </Routes>
       </>
     </BrowserRouter>
@@ -21,4 +21,5 @@ function App() {
 }
 
 export default App;
+
 

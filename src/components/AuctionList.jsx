@@ -10,8 +10,10 @@ const AuctionList = () => {
     const fetchData = async () => {
       const response = await fetch('https://auctioneer.azurewebsites.net/auction/h4i');
       const data = await response.json();
+      console.log(data); // Logga ut datan för att inspektera
       setData(data);
     };
+  
 
     fetchData();
   }, []);
@@ -36,7 +38,7 @@ const AuctionList = () => {
       />
       <ul className='ul'>
         {filteredData.map((auction) => (
-          <li className='listobjects' key={auction.Id}>
+           <li className='listobjects' key={auction.AuctionID}>
             <h2>{auction.Title}</h2>
             <h4>Description:</h4>
             <p>{auction.Description}</p>
@@ -48,9 +50,12 @@ const AuctionList = () => {
             <h4>Created by:</h4>
             <p>{auction.CreatedBy}</p>
             {/* Lägg till knappen för att länka till Bid sidan för varje auktion */}
-            <Link to={`/Bid/${auction.Id}`}>
-              <button className='bidButton'>Go to Bid</button>
-            </Link>
+            <Link to={{
+            pathname: `/Bid/${auction.AuctionID}`, // Ändra till AuctionID
+             state: { auction }
+            }}>
+           <button className='bidButton'>Go to Bid</button>
+           </Link>
           </li>
         ))}
       </ul>
