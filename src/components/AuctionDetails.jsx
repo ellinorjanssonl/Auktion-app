@@ -8,7 +8,6 @@ const AuctionDetails = () => {
 
  
   useEffect(() => {
-    // Antag att vi har en funktion som heter fetchAuctionDetails som tar ett ID och returnerar auktionsdetaljer
     const fetchAuctionDetails = async (id) => {
       try {
         const response = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${id}`);
