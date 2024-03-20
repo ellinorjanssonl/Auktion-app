@@ -1,7 +1,7 @@
 .navbar {
     max-width: 100%;
     overflow: hidden;
-    background-color:#656565; 
+    background-color:#c9faff; 
     padding: 0.5rem 1rem;
     display: flex;
     flex-direction: row;
@@ -28,11 +28,13 @@
 }
 
 .links a {
-    color: #bdeeff;
+    color: #3a3a3a;
     font-weight: bold;
     text-decoration: none;
     margin: 0 1rem;
     display: flex;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
 }
 
 .links a:hover {
