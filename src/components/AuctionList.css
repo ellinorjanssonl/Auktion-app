@@ -38,11 +38,17 @@
 
   .listobjects p {
     font-size: 0.85rem; /* Sätter textstorleken till 1.2 rem */
+    margin-top: 1px;
+    margin-bottom: 1rem;
+    text-align: center;
+    width: 80%;
   }
 
   .listobjects h4 {
     font-size: 1.2rem; /* Sätter textstorleken till 1.5 rem */
     font-weight: 500;
+    margin-top: 5px;
+    margin-bottom: 1px;
   }
   
   .oncklicklink {
@@ -54,6 +60,8 @@
     justify-content: center; /* Centrerar texten horisontellt */
     font-size: 1.7rem; /* Sätter textstorleken till 2 rem */
     font-weight: 400;
+    margin-top: 1px;
+    margin-bottom: 1rem;
     text-align: center;
     color:#e3f9ff;
     background-color: rgba(83, 83, 83, 0.6);
@@ -115,13 +123,12 @@
     padding: 0.5rem 2rem;
     border-radius: 5px;
     border: none;
-    background-color: #5310e2;
+    background-color: #5b5b5b;
     box-shadow: 1px 1px 5px #686569;
     color: #fff;
     cursor: pointer;
     display: flex;
     margin: 0 auto;
-    align-self: flex-end;
     position: absolute;
     bottom: 10;
     right: 0;
