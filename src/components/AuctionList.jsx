@@ -22,6 +22,20 @@ const AuctionList = () => {
     setSearchTerm(e.target.value.toLowerCase());
   };
 
+  const handleDeleteAuction = async (id) => {
+    const response = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (response.ok) {
+      // Remove the deleted auction from the data array
+      setData(data.filter(auction => auction.AuctionID !== id));
+      console.log('Auction deleted successfully');
+    } else {
+      console.error('Error deleting auction');
+    }
+  };
+
   const filteredData = data.filter(auction => 
     auction.Title.toLowerCase().includes(searchTerm) ||
     auction.Description.toLowerCase().includes(searchTerm)
@@ -49,6 +63,10 @@ const AuctionList = () => {
             <p>{auction.EndDate}</p>
             <h4>Created by:</h4>
             <p>{auction.CreatedBy}</p>
+            {/* Button to delete the auction */}
+            <div className="deleteButtonContainer">
+              <button className='deleteButton' onClick={() => handleDeleteAuction(auction.AuctionID)}>Delete Auction</button>
+            </div>
             {/* Lägg till knappen för att länka till Bid sidan för varje auktion */}
             <Link to={{
             pathname: `/Bid/${auction.AuctionID}`, // Ändra till AuctionID
