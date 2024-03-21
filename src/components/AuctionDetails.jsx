@@ -54,18 +54,15 @@ const AuctionDetails = () => {
     if (response.ok) {
       const data = await response.json();
       console.log('Bid placed:', data);
-      // Reset bid amount
       setBidAmount('');
       setBidder('');
-      // TODO: Behövs bidID och auctionID här? det görs bakom kulisserna isf..
-      // setBidID('');
-      // setAuctionID('');
-      // setGroupCode('');
 
     } else {
       console.error('Error placing bid');
     }
   }
+
+  
 
   return (
     <div>
