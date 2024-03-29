@@ -1,100 +1,164 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import CurrentBid from './CurrentBid';
+import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
 import './AuctionDetails.css';
 
-const AuctionDetails = () => {
-  let { auctionId } = useParams();
-  const [auctionDetails, setAuctionDetails] = useState(null);
-  const [bidder, setBidder] = useState('');
-  const [bidAmount, setBidAmount] = useState('');
- 
-  useEffect(() => {
-    const fetchAuctionDetails = async (id) => {
-      try {
-        const response = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${id}`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
+
+
+function AuctionDetails() {
+    const [data, setData] = useState({});
+    const location = useLocation();
+
+    const [bid, setBid] = useState('');
+    const [bidder, setBidder] = useState('');
+    const [groupCode, setGroupCode] = useState('h4i');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [fetchTrigger, setFetchTrigger] = useState(false);
+
+    const fetchDetails = async (AuctionID) => {
+        try {
+            const api = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${AuctionID}`);
+            const detailData = await api.json();
+            if (Object.keys(detailData).length > 0) { 
+                setData(detailData); 
+            } else {
+                console.error('No details found for ID:', AuctionID);
+                setData({}); 
+            }
+        } catch (error) {
+            console.error('Error fetching auction details:', error);
         }
-        const data = await response.json();
-        setAuctionDetails(data);
+    };
+
+    useEffect(() => {
+        const lastPartOfLocationPath = location.pathname.split('/').slice(-1)[0];
+        fetchDetails(lastPartOfLocationPath);
+    }, [location]);
+
+
+  const handleSubmit = async (e, AuctionID) => {
+    e.preventDefault();
+
+    try {
+      const response =await fetch('https://auctioneer.azurewebsites.net/bid/h4i', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            Amount: bid,
+            AuctionID: AuctionID, 
+            Bidder: bidder,
+            GroupCode: groupCode,
+          }),
+        });
+  
+
+        if (!response.ok){
+          if(response.status === 400 ) {
+            const errorMessage = (await response.text()).replace("Bad Request", "Please try again!");
+            setErrorMessage(errorMessage);
+          }
+        } else {
+          setBid("");
+          setBidder('');
+          setFetchTrigger(prevState => !prevState);
+        }
       } catch (error) {
-        console.error("Failed to fetch auction details:", error);
+        console.error("fetch error:", error);
+      }
+    };
+    const handleDeleteAuction = async () => {
+      try {
+          const response = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${data.AuctionID}`, {
+              method: 'DELETE'
+          });
+          if (response.ok) {
+              // Auction deleted successfully, you may want to perform any necessary cleanup actions here
+              console.log('Auction deleted successfully');
+              // Optionally, you can navigate the user to a different page after deletion
+              // history.push('/some-other-route');
+          } else {
+              console.error('Failed to delete auction');
+              setErrorMessage('Failed to delete auction');
+          }
+      } catch (error) {
+          console.error('Error deleting auction:', error);
+          setErrorMessage('Error deleting auction');
       }
     };
 
-    if (auctionId) {
-      fetchAuctionDetails(auctionId);
-    }
-  }, [auctionId]); // Den här effekten körs varje gång auctionId ändras
 
-  if (!auctionDetails) {
-    return <div className='Errormessage'> 
-      <h1>No auctions selected</h1>
-      <p>Please select an auction from the list to place bid</p>
-    </div>;
-  }
 
-  const placeBid = async () => {
-    const response = await fetch(
-      `https://auctioneer.azurewebsites.net/bid/h4i`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          Amount: bidAmount,
-          AuctionID: auctionId,
-          Bidder: bidder,
-          GroupCode: 'h4i'
-        }),
-      }
+    return (
+        <div>
+            
+                <div className='BidCard'>
+                  
+                    <ul>
+                        <b>{data.AuctionID}</b>
+                        <h2>{data.Title}</h2>
+                        <div className="dropdown">
+                          <button className="dropbtn">Current bid</button>
+                          <div className="dropdown-content">
+                            
+                            <CurrentBid  auctionId ={data.AuctionID} fetchTrigger={fetchTrigger} />
+                       
+                          </div>
+                        </div> 
+                        <div><b>Starting price: </b>{data.StartingPrice}:-</div>
+                        <p><b>Description: </b>{data.Description}</p>
+                        <div>Seller: <b>{data.CreatedBy}</b></div>
+                        <p><b>Startdate:</b> {data.StartDate}</p>
+                        <p><b>Enddate: </b>{data.EndDate}</p>
+
+                    </ul>
+
+                    <h2>Place Your Bid</h2>
+                   
+                    <Form.Floating className="mb-3">
+                    
+                        <input
+                          className='bidInput'
+                          type="number"
+                          placeholder="Bid"
+                          value={bid}
+                          onChange={(e)=> setBid(e.target.value)}
+                        />
+                        <input
+                          className='bidInput'
+                          type="text"
+                          placeholder="bidder"
+                          value={bidder}
+                          onChange={(e) => setBidder(e.target.value)}
+                        /> 
+                      </Form.Floating>
+                      <Button variant="success" type="submit" onClick={(e) => handleSubmit(e, data.AuctionID)}>Post Bid</Button>{''}
+
+                    {errorMessage && (
+                        <div className="alert alert-danger position-relative" role="alert">
+                          <button type="button" 
+                                  className="btn-close position-absolute top-0 end-0 mt-1 me-2" 
+                                  aria-label="Close" 
+                                  onClick={() => setErrorMessage('')}>
+                          </button>
+                          <span className="d-block py-2 px-4">{errorMessage}</span>
+                        </div>
+                      )}
+                  </div>
+                  <Button variant="danger" onClick={handleDeleteAuction}>Delete Auction</Button>
+                  {/* Render the DeleteAuction component if needed */}
+                  {errorMessage && (
+                      <div className="alert alert-danger" role="alert">
+                          {errorMessage}
+                      </div>
+                  )}
+        </div>
+        
     );
+}    
 
-    if (response.ok) {
-      const data = await response.json();
-      console.log('Bid placed:', data);
-      setBidAmount('');
-      setBidder('');
-
-    } else {
-      console.error('Error placing bid');
-    }
-  }
-
-  
-
-  return (
-    <div>
-      <div className='Bidsection'>
-      <h1>{auctionDetails.Title}</h1>
-      <h4>Description:</h4>
-      <p>{auctionDetails.Description}</p>
-      <h4>Starting price:</h4>
-      <p>{auctionDetails.StartingPrice}</p>
-      <h2>Place bid here</h2>
-      <div className='form-bid'>
-        <label htmlFor='bidder'>Bidder:</label>
-        <input
-          type='text'
-          id='bidder'
-          value={bidder}
-          onChange={(event) => setBidder(event.target.value)}
-        />
-        <label htmlFor='bidAmount'>Amount:</label>
-        <input
-          type='number'
-          id='bidAmount'
-          value={bidAmount}
-          onChange={(event) => setBidAmount(event.target.value)}
-        />
-        <button onClick={placeBid}>Place bid</button>
-      </div>
-      </div> 
-    </div>
-  );
-};
 
 export default AuctionDetails;
-
-

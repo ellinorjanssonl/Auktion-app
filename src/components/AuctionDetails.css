@@ -1,101 +1,84 @@
-.Errormessage {
-    font-size: 1.5rem;
-    color: snow;
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 120px;
+    box-shadow: 0px 8px 16px 0px rgba(234, 242, 233, 0.826);
+    padding: 12px 16px;
+    z-index: 1;
+    overflow-y: auto; 
+    max-height: 100px; 
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:focus-within .dropdown-content {
+    display: block;
+  }
+  
+  .bidStyle {
+    display: flex;
     justify-content: center;
+    align-items: center;
+   margin: 10px;
+  
+  
+  }
+  .bidInput  {
     text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-family: 'poppins';
+    color: #040404;
     margin: 0 auto;
-    padding: 0;
-}
-
-.Bidsection {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #0b0b0b;
+    width: 50%;
+    background-color: rgba(240, 247, 247, 0.5);
+  }
+  
+  .BidCard {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1rem;
     border-radius: 5px;
-    box-shadow: 0 1px 16px #6c4f72;
-    background-color: rgba(236, 29, 255, 0.2);
+    box-shadow: 0 1px 16px #c9faff;
+    background-color: rgba(170, 242, 252, 0.986);
     width: 50%;
     margin: 3rem auto;
-}
+    
+  }
 
-.Bidsection h1 {
-    text-align: center;
-    margin-bottom: 1px;
-    margin-top: 1px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 2rem;
-}
-
-.Bidsection h2 {
-    text-align: center;
-    margin-bottom: 1px;
-    color: #fff;
-    font-weight: 400;
-    font-size: 1.5rem;
-}
-
-.Bidsection p {
-    color: #5f5f5f;
-    text-align: center;
-    margin-bottom: 1px;
-    margin-top: 1px;
-}
-
-.Bidsection h4 {
-    color: #5f5f5f;
-    text-align: center;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    font-weight: 400;
-    font-size: 1.2rem;
-}
-
-.form-bid {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
+  .deleteButtonContainer {
+    margin-left: auto; /* This will push the delete button to the right */
+  }
+  .deleteButton {
     font-family: 'poppins';
-    color: #5f5f5f;
-    margin: 1rem 0;
-    padding: 2.5rem;
-    border-radius: 5px;
-    width: 50%;
-    background-color: rgba(175, 253, 254, 0.2);
-}
-
-.form-bid input {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    font-family: 'poppins';
-    color: #5f5f5f;
-    margin: 0 auto;
-    padding: 0.5rem;
-    border-radius: 5px;
-    border: 1px solid #717171;
-    width: 50%;
-    background-color: rgba(175, 253, 254, 0.5);
-}
-
-.form-bid button {
-    background-color: rgba(91, 243, 174, 0.6);
-    box-shadow: 0 1px 10px #8a6999;
-    color: white;
-    padding: 0.5rem 1rem;
-    text-align: center;
-    text-decoration: none;
-    margin: 0 auto;
-    cursor: pointer;
+    padding: 0.5rem 2rem;
     border-radius: 5px;
     border: none;
-    width: 30%;
-    margin-top: 1rem;
-}
+    background-color: #5b5b5b;
+    box-shadow: 1px 1px 5px #686569;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 10;
+    right: 0;
+  }
 
-.form-bid button:hover {
-    background-color: rgba(34, 200, 125, 0.8);
+  .deleteButton:hover {
+    background-color: #f41212;
     transform: matrix(1.1, 0, 0, 1.1, 0, 0);
-}
+  }

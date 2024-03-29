@@ -1,25 +1,35 @@
-import React from 'react';
-import AuctionList from "./components/AuctionList";
-import CreateAuction from "./components/CreateAuction";
-import AuctionDetails from "./components/AuctionDetails";
-import Navbar from "./components/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Routes, Route } from 'react-router-dom'
+import './App.css'
+import MyNav from './components/nav/NavBar'
+import AuctionHome from './components/AuctionHome';
+import AuctionPast from './components/AuctionPast';
+import AuctionDetails from './components/AuctionDetails';
+import AuctionCreate from './components/AuctionCreate';
+import AuctionFuture from './components/AuctionFuture';
+import { useState } from 'react';
 
 function App() {
+  const [searchTerm, setSearchTerm]= useState('');
+
+  const handleSearch = (term) =>{
+    setSearchTerm(term);
+  };
+
+
   return (
-    <BrowserRouter>
-      <>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<AuctionList />} />
-          <Route path="/CreateAuction" element={<CreateAuction />} />
-          <Route path="/Bid/:auctionId" element={<AuctionDetails />} /> {/* Ändra till :auctionId här */}
-        </Routes>
-      </>
-    </BrowserRouter>
-  );
+    <>
+    <MyNav onSearch={handleSearch}  />
+    <Routes>
+        <Route path="/newauction" element={<AuctionCreate/>} />
+        <Route path="/" element={<AuctionHome  searchTerm={searchTerm}/>} />
+        <Route path="/notcurrent" element={<AuctionPast/>} />
+        <Route path="/future" element={<AuctionFuture />} />
+        <Route path="/auctiondetails/:id" element={<AuctionDetails />} />
+    </Routes>
+    </>
+  )
 }
 
-export default App;
-
+export default App
 
