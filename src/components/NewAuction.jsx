@@ -1,17 +1,21 @@
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
 import styled from "styled-components";
 import './AuctionDetails.css';
 
 const NewAuction = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [groupCode] = useState("");
-  const [startingPrice, setStartingPrice] = useState("");
-  const [createdBy, setCreatedBy] = useState("");
-  const [status, setStatus] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    startDate: "",
+    endDate: "",
+    startingPrice: "",
+    createdBy: ""
+  });
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const API_POST = "https://auctioneer.azurewebsites.net/auction/h4i";
@@ -19,7 +23,8 @@ const NewAuction = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-   
+    const { title, description, startDate, endDate, startingPrice, createdBy } = formData;
+    
     if (!title || !description || !startDate || !endDate || !startingPrice || !createdBy) {
       setErrorMessage("Please fill in all fields.");
       return;
@@ -28,150 +33,89 @@ const NewAuction = () => {
     try {
       const response = await fetch(API_POST, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          Title: title,
-          Description: description,
-          StartDate: startDate,
-          EndDate: endDate,
-          GroupCode: groupCode,
-          StartingPrice: startingPrice,
-          CreatedBy: createdBy,
-        }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, GroupCode: "" }),
       });
 
       if (response.ok) {
-        setStatus("SUCCESS");
-        setTitle("");
-        setDescription("");
-        setStartDate("");
-        setEndDate("");
-        setStartingPrice("");
-        setCreatedBy("");
-        setErrorMessage(""); 
+        setIsSuccess(true);
+        setFormData({
+          title: "",
+          description: "",
+          startDate: "",
+          endDate: "",
+          startingPrice: "",
+          createdBy: ""
+        });
       } else {
+        setIsError(true);
         console.error("Failed to post auction");
-        setStatus("ERROR");
       }
     } catch (error) {
+      setIsError(true);
       console.error("Fetch error:", error);
-      setStatus("ERROR");
     }
   };
-  
+
   useEffect(() => {
-    if (status === "SUCCESS" || status === "ERROR") {
+    if (isSuccess || isError) {
       const timeout = setTimeout(() => {
-        setStatus("");
+        setIsSuccess(false);
+        setIsError(false);
+        setErrorMessage("");
       }, 3000);
       return () => clearTimeout(timeout);
     }
-  }, [status]);
+  }, [isSuccess, isError]);
 
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
 
   return (
-    <> 
-    <div className="NewAuction">
+   
+    <FormContainer>
+       <div className="NewAuction">
       <h1>Create a new auction</h1>
-      <Form.Floating className="mb-3">
-        <Form.Control
-          id="floatingInputCustom"
-          type="text"
-          placeholder=""
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label htmlFor="floatingInputCustom">Title</label>
-      </Form.Floating>
+      <Form onSubmit={handleSubmit}>
+        {["title", "description", "startingPrice", "createdBy"].map((field) => (
+          <Form.Group className="mb-3" key={field}>
+            <Form.Label>{field.charAt(0).toUpperCase() + field.slice(1)}</Form.Label>
+            <Form.Control
+              type={field === "description" ? "textarea" : "text"}
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              as={field === "description" ? "textarea" : "input"}
+            />
+          </Form.Group>
+        ))}
 
-      <Form.Floating className="mb-3">
-        <Form.Control
-          id="floatingInputCustom"
-          as="textarea"
-          placeholder=""
-          style={{ height: "100px", width: "30vw"}}
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <label htmlFor="floatingInputCustom">Describe product here</label>
-      </Form.Floating>
-      <Form.Floating className="mb-3">
-        <Form.Control
-          id="floatingInputCustom"
-          type="text"
-          placeholder=""
-          value={startingPrice}
-          onChange={(e) => setStartingPrice(e.target.value)}
-        />
-        <label htmlFor="floatingInputCustom">Starting Price</label>
-      </Form.Floating>
+        {["startDate", "endDate"].map((field) => (
+          <Form.Group className="mb-3" key={field}>
+            <Form.Label>{field.charAt(0).toUpperCase() + field.slice(1)}</Form.Label>
+            <Form.Control
+              type="datetime-local"
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+            />
+          </Form.Group>
+        ))}
 
-      <div label htmlFor="StartDate">
-        Start Date
+        <Button variant="primary" type="submit">Post Auction</Button>
+      </Form>
+      {isSuccess && <Alert variant="success">Your auction has been successfully posted!</Alert>}
+      {isError && <Alert variant="danger">Failed to post auction. Please try again later.</Alert>}
+      {errorMessage && <Alert variant="warning">{errorMessage}</Alert>}
       </div>
-      <input
-      
-        type="datetime-local"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
-
-      <div label htmlFor="endDate">
-        End Date
-      </div>
-      <input
-        type="datetime-local"
-        placeholder="End Date"
-        value={endDate}
-        onChange={(e) => setEndDate(e.target.value)}
-      />
-
-      <Form.Floating className="mb-3">
-        <Form.Control
-          id="floatingInputCustom"
-          type="text"
-          placeholder=""
-          value={createdBy}
-          onChange={(e) => setCreatedBy(e.target.value)}
-        />
-        <label htmlFor="floatingInputCustom">Created by</label>
-      </Form.Floating>
-
-      <button type="submit" onClick={(e) => handleSubmit(e)}>
-        Post Auction
-      </button>
-
-      {status === "SUCCESS" && (
-        <Message>
-          <p>Your auction has been successfully posted!</p>
-       </Message>
-      )}
-        {status === "ERROR" && (
-        <MessageError>
-          <p>Failed to post auction. Please try again later.</p>
-       </MessageError>
-      )}
-       {errorMessage && (
-        <MessageError>
-          {errorMessage}
-        </MessageError>
-      )}
-      </div>
-    </>
+    </FormContainer>
   );
 };
 
+const FormContainer = styled.div`
+`;
 
 export default NewAuction;
 
- const Message = styled.div`
-  color: black;
-  font-weight: bold;
-`; 
-
-const MessageError = styled.div`
-  color: red;
-  font-weight: bold;
-`;
