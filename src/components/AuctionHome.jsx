@@ -1,11 +1,11 @@
-import CurrentAuctions from './CurrentAuctions'
+import CreatAuctions from './CreateAuctions'
 
 import React from 'react'
 
 const AuctionHome = ({searchTerm}) => {
   return (
     <div>
-   <CurrentAuctions searchTerm= {searchTerm} />
+   <CreatAuctions searchTerm= {searchTerm} />
    </div>
   )
 }
