@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import styled from "styled-components";
+import './AuctionDetails.css';
 
 const NewAuction = () => {
   const [title, setTitle] = useState("");
@@ -71,9 +72,9 @@ const NewAuction = () => {
 
 
   return (
-    <>
-
-    
+    <> 
+    <div className="NewAuction">
+      <h1>Create a new auction</h1>
       <Form.Floating className="mb-3">
         <Form.Control
           id="floatingInputCustom"
@@ -90,14 +91,12 @@ const NewAuction = () => {
           id="floatingInputCustom"
           as="textarea"
           placeholder=""
-          style={{ height: "100px" }}
+          style={{ height: "100px", width: "30vw"}}
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         <label htmlFor="floatingInputCustom">Describe product here</label>
       </Form.Floating>
-
-
       <Form.Floating className="mb-3">
         <Form.Control
           id="floatingInputCustom"
@@ -159,12 +158,10 @@ const NewAuction = () => {
           {errorMessage}
         </MessageError>
       )}
-      
+      </div>
     </>
   );
 };
-
-
 
 
 export default NewAuction;

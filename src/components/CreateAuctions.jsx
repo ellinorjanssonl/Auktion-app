@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
+import './CreateAuction.css';
  
 
 
@@ -61,14 +62,13 @@ function CurrentAuctions() {
         </Form>
       </div>
 
-     <div className="search-results mt-5 p-5 ">
+     <div className="search-results">
       {searchTerm !== '' ? (
         <div>
           {searchResults.map((item) => (
-            <div key={item.AuctionID} className=''>
-              <Link key={item.AuctionID} to={"/auctiondetails/" + item.AuctionID}>
-                <ul className='ul'>
-                  <b>{item.AuctionID}</b>
+            <div key={item.AuctionID} className='Card'>
+              <Link className='link' key={item.AuctionID} to={"/auctiondetails/" + item.AuctionID}>
+                <ul className='Listobjects'>
                   <h2>{item.Title}</h2>
                   <p><b>Starting price: </b><b>{item.StartingPrice}:-</b></p>
                   <p><b>Description: </b>{item.Description}</p>
@@ -85,9 +85,8 @@ function CurrentAuctions() {
         <div>
           {allAuctions.map((item, index) => (
             <div key={index} className='Card'>
-              <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
-                <ul className='listobjects'>
-                  <b>{item.AuctionID}</b>
+              <Link className='link' key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}>
+                <ul className='Listobjects'>
                   <h2>{item.Title}</h2>
                   <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
                   <p><b>Description: </b>{item.Description}</p>

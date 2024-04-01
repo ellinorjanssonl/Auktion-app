@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Button } from 'react-bootstrap';
 
 const BidList = ({AuctionId, showHighestOnly}) => {
     const [bids, setBids] = useState([]);
@@ -29,7 +28,7 @@ const BidList = ({AuctionId, showHighestOnly}) => {
         <>
           {showHighestOnly && higestBid !== null ? (
             <div>
-              <p style={{ color: 'red', backgroundColor: 'lightgrey'  }}><b>Final price: {higestBid}:- </b></p>
+              <p style={{ color: 'red' }}><b>Final price: {higestBid} SEK</b></p>
             </div>
           ) : (
             <div>

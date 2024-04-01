@@ -39,7 +39,7 @@ function CurrentBid({ auctionId, fetchTrigger }) {
                 .sort((a, b) => b.Amount - a.Amount) // Sort bids by Amount in descending order
                 .map((bid, index) => (
                     <div key={index}>
-                        {bid.Amount} :-
+                        {bid.Amount}:SEK
                         <div>
                             <b>
                             {bid.Bidder}

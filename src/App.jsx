@@ -16,7 +16,6 @@ function App() {
     setSearchTerm(term);
   };
 
-
   return (
     <>
     <MyNav onSearch={handleSearch}  />

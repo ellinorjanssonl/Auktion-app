@@ -47,7 +47,6 @@ function FutureAuctions() {
           <p><b>Startdate:</b> {item.StartDate}</p>
           <p><b>Enddate: </b>{item.EndDate}</p>
 
-
           <DeleteAuction auctionId={item.AuctionID} onDelete={handleDelete}/>
         </div>
       ) 

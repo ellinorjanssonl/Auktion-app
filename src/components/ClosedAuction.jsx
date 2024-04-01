@@ -1,6 +1,6 @@
 import { useState, useEffect} from 'react'
 import BidList from './BidList';
-
+import './AuctionDetails.css';
 
 function PastAuctions() {
   const [data, setData] = useState([]);
@@ -28,20 +28,15 @@ function PastAuctions() {
       {data.map((item, index) => (
        
         <div key={index} className='Card'> 
-       {/* <Link key={item.AuctionId} to={"/auctiondetails/" + item.AuctionID}> */}
-          <ul>
-          <b>{item.AuctionID}</b>
+          <ul className='Cardlist'>
           <h2>{item.Title}</h2>
-          <div><b>Starting price: </b><b>{item.StartingPrice}:-</b></div>
+          <div><b>Starting price: </b><b>{item.StartingPrice} SEK</b></div>
           <p><b>Description: </b>{item.Description}</p>
           
           <div>Seller: <b>{item.CreatedBy}</b></div>
           <p><b>Startdate:</b> {item.StartDate}</p>
           <p><b>Enddate: </b>{item.EndDate}</p>
-
-          {/* Render other properties here if needed */}
           </ul>
-          {/* </Link> */}
           <BidList AuctionId={item.AuctionID} showHighestOnly={true}/>
         </div>
        
