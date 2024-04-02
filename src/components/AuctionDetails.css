@@ -1,7 +1,6 @@
 .dropdown {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    position: relative;
     display: inline-block;
   }
 
@@ -15,17 +14,22 @@
     box-shadow: 0 1px 16px #56445a;
     background-color: rgba(129, 211, 255, 0.4);
     width: 60%;
-    margin: 1rem auto;
+    margin: 2rem auto;
   }
 
  .dropbtn {
-    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #242435;
     color: #ffffff;
+    border-style: none;
     font-family: 'poppins';
-    font-size: 1rem;
+    font-size: 0.8rem;
     cursor: pointer;
-    padding: 0.25rem;
+    padding: 0.5rem;
     border-radius: 5px;
+    margin-right: 1rem;
   }
   
   .dropdown-content {
@@ -38,7 +42,7 @@
     padding: 1rem 2rem;
     z-index: 1;
     overflow-y: auto; 
-    max-height: 20rem; 
+    max-height: 10rem; 
   }
   
   .dropdown:hover .dropdown-content {
@@ -50,10 +54,10 @@
   }
   
   .bidStyle {
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin-right: 1rem;
   
   }
   .bidInput  {
@@ -80,7 +84,14 @@
     box-shadow: 0 1px 16px #4c4c4c;
     background-color: rgba(170, 242, 252, 0.386);
     width: 50%;
-    margin: 3rem auto;   
+    margin: 2rem auto;   
+  }
+
+  .StartingPrice {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
   }
 
   .deleteButtonContainer {
