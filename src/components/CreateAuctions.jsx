@@ -14,7 +14,6 @@ const AuctionCard = ({ auction }) => {
           <p>Seller: <b>{auction.CreatedBy}</b></p>
           <p><b>Startdate:</b> {auction.StartDate}</p>
           <p><b>Enddate:</b> {auction.EndDate}</p>
-          {/* Render other properties here if needed */}
         </ul>
       </Link>
     </div>

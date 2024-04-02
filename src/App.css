@@ -86,14 +86,15 @@
     background-color: rgba(113, 255, 191, 0.6);
     box-shadow: 0 1px 16px #8a6999;
     color: white;
-    padding: 1rem 1rem;
+    padding: 0.5rem 2rem;
     text-align: center;
     text-decoration: none;
     margin: 1rem 0;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 0.9rem;
     border: none;
-    width: 30%;
+    width: 40%;
   }
 
   .NewAuction button:hover {

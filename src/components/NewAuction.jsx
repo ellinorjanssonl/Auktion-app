@@ -104,7 +104,7 @@ const NewAuction = () => {
           </Form.Group>
         ))}
 
-        <Button variant="primary" type="submit">Post Auction</Button>
+        <Button className="buttoncreate" variant="primary" type="submit">Post Auction</Button>
       </Form>
       {isSuccess && <Alert variant="success">Your auction has been successfully posted!</Alert>}
       {isError && <Alert variant="danger">Failed to post auction. Please try again later.</Alert>}
