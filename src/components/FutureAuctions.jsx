@@ -23,7 +23,7 @@ function FutureAuctions() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://auctioneer.azurewebsites.net/auction/h4i/');
+        const response = await fetch('https://auctioneer.azurewebsites.net/auction/h4i');
         const data = await response.json();
         const today = new Date();
         const futureAuctionsData = data.filter(auction => {

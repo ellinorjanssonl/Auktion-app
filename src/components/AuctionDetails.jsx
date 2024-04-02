@@ -119,7 +119,7 @@ function AuctionInfo({ data, refreshTrigger }) {
                     <CurrentBid auctionId={data.AuctionID} fetchTrigger={refreshTrigger} />
                 </div>
             </div> 
-            <div className='StartingPrice'>
+            <div className=' a'>
             <div><b>Starting price: </b>{data.StartingPrice} SEK</div>
             <p><b>Description: </b>{data.Description}</p>
             <div>Seller: <b>{data.CreatedBy}</b></div>
