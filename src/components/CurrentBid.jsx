@@ -9,7 +9,7 @@ function CurrentBid({ auctionId, fetchTrigger }) {
         const fetchCurrentBid = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`https://auctioneer.azurewebsites.net/bid/h4i/${auctionId}`);
+                const response = await fetch(`https://auctioneer2.azurewebsites.net/bid/h4i/${auctionId}`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

@@ -14,7 +14,7 @@ const Bid = ({ AuctionID, StartingPrice, BidID }) => {
     font-weight: bold;
   `;
 
-  const API_POST = `https://auctioneer.azurewebsites.net/bid/${AuctionID}`;
+  const API_POST = `https://auctioneer2.azurewebsites.net/bid/${AuctionID}`;
 
   const handleSubmit = async (event) => {
     event.preventDefault();

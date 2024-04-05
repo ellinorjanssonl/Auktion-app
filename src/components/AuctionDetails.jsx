@@ -23,7 +23,7 @@ function AuctionDetails() {
 
     async function fetchAuctionDetails(auctionId) {
         try {
-            const response = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${auctionId}`);
+            const response = await fetch(`https://auctioneer2.azurewebsites.net/auction/h4i/${auctionId}`);
             const data = await response.json();
             if (response.ok && Object.keys(data).length) {
                 setAuctionDetails(data);
@@ -50,7 +50,7 @@ function AuctionDetails() {
         };
 
         try {
-            const response = await fetch('https://auctioneer.azurewebsites.net/bid/h4i', {
+            const response = await fetch('https://auctioneer2.azurewebsites.net/bid/h4i', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(bidData),
@@ -74,7 +74,7 @@ function AuctionDetails() {
 
     async function handleDeleteAuction() {
       try {
-          const response = await fetch(`https://auctioneer.azurewebsites.net/auction/h4i/${auctionId}`, {
+          const response = await fetch(`https://auctioneer2.azurewebsites.net/auction/h4i/${auctionId}`, {
               method: 'DELETE'
           });
   

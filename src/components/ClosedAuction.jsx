@@ -6,7 +6,7 @@ function PastAuctions() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('https://auctioneer.azurewebsites.net/auction/h4i/')
+    fetch('https://auctioneer2.azurewebsites.net/auction/h4i/')
       .then(response => response.json()) // Parse response as JSON
       .then(data => {
        /* This is to filter past auctions EndDate is yesterday or before  */

@@ -31,7 +31,7 @@ function CurrentAuctions() {
 
   const fetchAuctions = async () => {
     try {
-      const response = await fetch('https://auctioneer.azurewebsites.net/auction/h4i/');
+      const response = await fetch('https://auctioneer2.azurewebsites.net/auction/h4i/');
       const data = await response.json();
       const currentAuctionsData = data.filter(auction => {
         const today = new Date();

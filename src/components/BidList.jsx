@@ -9,7 +9,7 @@ const BidList = ({ AuctionId, showHighestOnly }) => {
     useEffect(() => {
         const fetchBids = async () => {
             try {
-                const response = await fetch(`https://auctioneer.azurewebsites.net/bid/h4i/${AuctionId}`);
+                const response = await fetch(`https://auctioneer2.azurewebsites.net/bid/h4i/${AuctionId}`);
                 const data = await response.json();
                 console.log("Fetched bids:", data);
                 setBids(data);

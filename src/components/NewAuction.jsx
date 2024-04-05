@@ -14,7 +14,7 @@ const NewAuction = () => {
   const [status, setStatus] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const API_POST = "https://auctioneer.azurewebsites.net/auction/h4i";
+  const API_POST = "https://auctioneer2.azurewebsites.net/auction/h4i";
 
   const handleSubmit = async (event) => {
     event.preventDefault();
